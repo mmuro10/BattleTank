@@ -22,7 +22,7 @@ void ATankPlayerController::BeginPlay()
 	}
 	else
 	{
-		UE_LOG(LogTemp, Warning, TEXT("PlayerController possesing: %s"), *(ControlledTank->GetName())) ;
+		UE_LOG(LogTemp, Warning, TEXT("PlayerController possesing: %s"), *ControlledTank->GetName());
 	}
 }
 
@@ -38,8 +38,7 @@ void ATankPlayerController::AimtowardsCrosshair()
 	FVector OutHitLocation; //out parameter
 	if (GetSightRayHitLocation(OutHitLocation))
 	{
-		UE_LOG(LogTemp, Warning, TEXT("Hit Location: %s"), *OutHitLocation.ToString());
-		//Tell controlled tnak to aim at this point
+		GetControlledTank()->AimAt(OutHitLocation);
 	}
 }
 
