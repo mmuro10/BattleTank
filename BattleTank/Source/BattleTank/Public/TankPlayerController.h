@@ -18,7 +18,6 @@ private:
 	//start the tank moving the barrel so that a shot will hit @ crosshair intersects the world
 	void AimtowardsCrosshair();
 
-public:
 	ATank* GetControlledTank() const; 
 
 	// Called every frame
@@ -28,5 +27,9 @@ public:
 
 	//Return an OUT paramerter, true if hit landscapre
 	bool GetSightRayHitLocation(FVector& OutHitlocation) const;
+
+	UPROPERTY(EditAnywhere)
+	float CrosshairXLocation = 0.5;
+	float CrosshairYLocation = 0.3333;
 	
 };

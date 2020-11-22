@@ -38,7 +38,7 @@ void ATankPlayerController::AimtowardsCrosshair()
 	FVector OutHitLocation; //out parameter
 	if (GetSightRayHitLocation(OutHitLocation))
 	{
-		UE_LOG(LogTemp, Warning, TEXT("Hitlocation: %s"), *OutHitLocation.ToString());
+		//UE_LOG(LogTemp, Warning, TEXT("Look Direction: %s"), *OutHitLocation.ToString());
 		//Tell controlled tnak to aim at this point
 	}
 }
@@ -46,6 +46,13 @@ void ATankPlayerController::AimtowardsCrosshair()
 //Get world location if linetrace through crosshair. If it hits the landscape
 bool ATankPlayerController::GetSightRayHitLocation(FVector& OutHitlocation) const
 {
-	OutHitlocation = FVector(1.0);
+	//find the crosshair position
+	int32 ViewportSizeX, ViewportSizeY;
+	GetViewportSize(ViewportSizeX, ViewportSizeY);
+	auto ScreenlLocation = FVector2D(ViewportSizeX * CrosshairXLocation, ViewportSizeY * CrosshairYLocation);
+	UE_LOG(LogTemp, Warning, TEXT("ScreenLocation: %s"), *ScreenlLocation.ToString());
+
+	//de[project the screen position of the crosshair to ta world direction
+	//line-trace along that look direction and see what we hit (up to max range)
 	return true;
 }
