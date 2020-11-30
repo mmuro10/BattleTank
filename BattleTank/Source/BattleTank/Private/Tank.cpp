@@ -4,10 +4,7 @@
 #include "TankAimingComponent.h"
 #include "Tank.h"
 
-void ATank::SetBarrelReference(UTankBarrel * BarrelToSet)
-{
-	TankAimingComponent->SetBarrelReference(BarrelToSet);
-}
+
 
 // Sets default values
 ATank::ATank()
@@ -25,6 +22,16 @@ void ATank::BeginPlay()
 {
 	Super::BeginPlay();
 	
+}
+
+void ATank::SetBarrelReference(UTankBarrel * BarrelToSet)
+{
+	TankAimingComponent->SetBarrelReference(BarrelToSet);
+}
+
+void ATank::SetTurretReference(UTankTurret* TurretToSet)
+{
+	TankAimingComponent->SetTurretReference(TurretToSet);
 }
 
 // Called to bind functionality to input
