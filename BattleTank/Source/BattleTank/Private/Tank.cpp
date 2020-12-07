@@ -23,7 +23,6 @@ ATank::ATank()
 void ATank::BeginPlay()
 {
 	Super::BeginPlay();
-	
 }
 
 void ATank::SetBarrelReference(UTankBarrel * BarrelToSet)
