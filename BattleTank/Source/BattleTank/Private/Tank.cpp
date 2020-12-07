@@ -2,7 +2,7 @@
 
 
 #include "Tank.h"
-#include "TankAimingComponent.h"
+#include "TankAimingComponent.h" 
 #include "TankBarrel.h"
 #include "Projectile.h"
 
@@ -51,8 +51,6 @@ void ATank::AimAt(FVector OutHitLocation)
 
 void ATank::Fire()
 {
-	UE_LOG(LogTemp, Warning, TEXT("%s is firing away!!!"), *GetOwner()->GetName());
-
 	if (!Barrel)
 	{ 
 		UE_LOG(LogTemp, Warning, TEXT("%s does not have a barrel reference"), *GetOwner()->GetName());
@@ -60,10 +58,13 @@ void ATank::Fire()
 	}
 
 	//spawn a projectle at socket location
-	GetWorld()->SpawnActor<AProjectile>
+	auto Projectile = GetWorld()->SpawnActor<AProjectile>
 		(
 			ProjectileBlueprint,
 			Barrel->GetSocketLocation(FName("Projectile")),
 			Barrel->GetSocketRotation(FName("Projectile"))
 		);
+
+	Projectile->LaunchProjectile(LaunchSpeed);
+	UE_LOG(LogTemp, Warning, TEXT("%s fires at %f"), *GetOwner()->GetName(), LaunchSpeed);
 }
