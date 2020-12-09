@@ -14,11 +14,15 @@ UCLASS()
 class BATTLETANK_API ATankPlayerController : public APlayerController
 {
 	GENERATED_BODY()
+		
+protected:
+
+	UFUNCTION(BlueprintCallable, Category = "Setup")
+	ATank* GetControlledTank() const; 
+
 private:
 	//start the tank moving the barrel so that a shot will hit @ crosshair intersects the world
 	void AimtowardsCrosshair();
-
-	ATank* GetControlledTank() const; 
 
 	// Called every frame
 	virtual void BeginPlay() override;
