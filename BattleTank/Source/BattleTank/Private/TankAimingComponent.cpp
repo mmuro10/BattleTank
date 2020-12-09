@@ -14,23 +14,9 @@ UTankAimingComponent::UTankAimingComponent()
 	// ...
 }
 
-void UTankAimingComponent::SetBarrelReference(UTankBarrel * BarrelToSet)
+void UTankAimingComponent::Initialize(UTankBarrel* BarrelToSet, UTankTurret* TurretToSet)
 {
-	if (!BarrelToSet)
-	{
-		UE_LOG(LogTemp, Error, TEXT("%s has no BarrelToSet"), *GetOwner()->GetName());
-		return;
-	}
 	Barrel = BarrelToSet;
-}
-
-void UTankAimingComponent::SetTurretReference(UTankTurret* TurretToSet)
-{
-	if (!TurretToSet)
-	{
-		UE_LOG(LogTemp, Error, TEXT("%s has no TurretToSet"), *GetOwner()->GetName());
-		return;
-	}
 	Turret = TurretToSet;
 }
 
@@ -61,8 +47,6 @@ void UTankAimingComponent::AimAt(FVector OutHitLocation, float LaunchSpeed)
 	{
 		auto AimDirection = OutLaunchVelocity.GetSafeNormal();
 		MoveBarrelTowards(AimDirection);
-		//auto Time = GetWorld()->GetTimeSeconds();
-		//UE_LOG(LogTemp, Warning, TEXT("%f: Aim Solution Found"), Time);
 	}
 }
 
