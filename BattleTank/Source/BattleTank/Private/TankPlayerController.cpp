@@ -1,6 +1,6 @@
 // Fill out your copyright notice in the Description page of Project Settings.
 
-
+#include "TankAimingComponent.h"
 #include "TankPlayerController.h"
 #include "Tank.h"
 	
@@ -15,6 +15,16 @@ void ATankPlayerController::Tick(float DeltaTime)
 void ATankPlayerController::BeginPlay()
 {
 	Super::BeginPlay();
+
+	auto AimingComponent = GetControlledTank()->FindComponentByClass<UTankAimingComponent>();
+	if (AimingComponent)
+	{
+		FoundAimingComponent(AimingComponent); 
+	}
+	else
+	{
+		UE_LOG(LogTemp, Warning, TEXT("PlayerController Can't find aiming compoent at begin play"));
+	}
 
 	auto ControlledTank = GetControlledTank();
 	if (!ControlledTank)
