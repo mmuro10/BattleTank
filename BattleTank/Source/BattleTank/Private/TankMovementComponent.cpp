@@ -28,3 +28,12 @@ void UTankMovementComponent::IntendTurnRight(float Throw)
 
 	//TODO prevent double speed due to duel input
 }
+
+void UTankMovementComponent::RequestDirectMove(const FVector& MoveVelocity, bool bForceMaxSpeed)
+{
+	//No need to call super as were replacing the functionality
+	auto Name = GetOwner()->GetName();
+	auto Speed = MoveVelocity;
+
+	UE_LOG(LogTemp, Warning, TEXT("%s moving to %s"), *Name, *Speed.ToString());
+}
