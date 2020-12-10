@@ -35,6 +35,8 @@ public:
 
 	void AimAt(FVector OutHitLocation);
 
+	bool bIsBarrelMoving();
+
 	UFUNCTION(BlueprintCallable, Category = "Firing")
 	void Fire();
 
@@ -62,11 +64,10 @@ private:
 
 	double LastFireTime = 0;
 
+	FVector AimDirection;
+
 	UTankBarrel* Barrel = nullptr;
 	UTankTurret* Turret = nullptr;
 
-	void MoveBarrelTowards(FVector AimDirection);
-
-	
-		
+	void MoveBarrelTowards(FVector AimVector);
 };
