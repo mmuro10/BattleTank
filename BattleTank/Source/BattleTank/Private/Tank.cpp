@@ -10,12 +10,17 @@ ATank::ATank()
 {
  	// Set this pawn to call Tick() every frame.  You can turn this off to improve performance if you don't need it.
 	PrimaryActorTick.bCanEverTick = false;
+
+	
 }
 
 // Called when the game starts or when spawned
 void ATank::BeginPlay()
 {
 	Super::BeginPlay();
+	
+	TankAimingComponent = FindComponentByClass<UTankAimingComponent>();
+	Barrel = FindComponentByClass<UTankBarrel>();
 }
 
 void ATank::AimAt(FVector OutHitLocation)
@@ -27,6 +32,7 @@ void ATank::AimAt(FVector OutHitLocation)
 void ATank::Fire()
 {
 	if (!ensure(Barrel)) { return; }
+
 	bool IsReloaded = (FPlatformTime::Seconds() - LastFireTime) > ReloadTimeInSeconds;
 
 	if (IsReloaded)
