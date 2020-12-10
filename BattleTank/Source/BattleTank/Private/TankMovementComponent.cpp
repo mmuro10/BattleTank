@@ -36,5 +36,3 @@ void UTankMovementComponent::RequestDirectMove(const FVector& MoveVelocity, bool
 	auto RightThrow = FVector::CrossProduct(TankForward, AiForwardIntention).Z;
 	IntendTurnRight(RightThrow);
 }
-
-//UE_LOG(LogTemp, Warning, TEXT("%s moving to %s"), *Name, *Speed);

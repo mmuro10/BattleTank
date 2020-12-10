@@ -48,11 +48,7 @@ void UTankAimingComponent::Initialize(UTankBarrel* BarrelToSet, UTankTurret* Tur
 
 void UTankAimingComponent::AimAt(FVector OutHitLocation)
 {
-	if (!ensure(Barrel))
-	{
-		UE_LOG(LogTemp, Error, TEXT("%s has no Barrel component"), *GetOwner()->GetName());
-		return; 
-	}
+	if (!ensure(Barrel)){ return; }
 
 	FVector OutLaunchVelocity;
 	FVector StartLocation = Barrel->GetSocketLocation(FName("Projectile"));
