@@ -5,7 +5,6 @@
 #include "TankAimingComponent.h"
 #include "Tank.h"
 
-
 void ATankAIController::BeginPlay()
 {
 	Super::BeginPlay();
@@ -24,7 +23,11 @@ void ATankAIController::Tick(float DeltaTime)
 
 	auto AimingComponent = ControlledTank->FindComponentByClass<UTankAimingComponent>();
 	AimingComponent->AimAt(PlayerTank->GetActorLocation());
-	AimingComponent->Fire();
 
+	//if aiming or locked
+	if (AimingComponent->GetFiringState() == EFiringState::Locked)
+	{
+		AimingComponent->Fire();
+	}
 }
 
