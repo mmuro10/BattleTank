@@ -22,7 +22,13 @@ public:
 	void LaunchProjectile(float Speed);
 
 protected:
-	UProjectileMovementComponent* ProjectileMovement= nullptr;
+	UProjectileMovementComponent* ProjectileMovement = nullptr;
+
+	UPROPERTY(VisibleAnywhere, Category = "Components")
+	UStaticMeshComponent* CollisionMesh = nullptr;
+
+	UPROPERTY(VisibleAnywhere, Category = "Components")
+	UParticleSystemComponent* LaunchBlast = nullptr;
 
 public:	
 	// Called every frame
