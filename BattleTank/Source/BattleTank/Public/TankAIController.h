@@ -24,6 +24,6 @@ private:
 protected:
 
 	//How close can the AI Tank get
-	UPROPERTY(EditDefaultsOnly, Category = "Ai Navigation")
-	float AcceptanceRadius = 500.0f;
+	UPROPERTY(EditAnywhere, Category = "Ai Navigation")
+	float AcceptanceRadius = 3000.0f;
 };
